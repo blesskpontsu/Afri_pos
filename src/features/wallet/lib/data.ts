@@ -5,7 +5,7 @@ import { TransactionType } from "./types";
   export const transactionTypes: TransactionType[] = [
     {
       id: 'deposit',
-      name: 'Deposit',
+      name: 'Topup',
       href: '/deposit'
     },
     {

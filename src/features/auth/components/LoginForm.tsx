@@ -41,7 +41,7 @@ function LoginForm({ Login, loading }: Props) {
 
       {/* app version */}
       <div className="text-center text-gray-300 text-xs">
-        <p>App version: 1.0.0</p>
+        <p>App version: 1.0.1</p>
       </div>
     </div>
   );
