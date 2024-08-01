@@ -15,7 +15,7 @@ import { TransactionType } from "./types";
     },
     {
       id: 'transfer',
-      name: 'Transfer',
+      name: 'Load',
       href: '/transfer'
     }
   ]

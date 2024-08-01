@@ -59,13 +59,13 @@ const TransactionCard = ({ transaction }: Props) => {
           </div>
           <div className="flex justify-between flex-wrap gap-1 text-sm w-full">
             <p className="flex gap-1 text-gray-600">
-              Deposit:
+              {transaction.type}:
               <span className="text-red-600">{transaction.amount} GHS</span>
             </p>
-            <p className="flex gap-1 text-gray-600">
+            {/* {transaction.type == "Credit" && <p className="flex gap-1 text-gray-600">
               Credited:
               <span className="text-red-600">{transaction.credited} GHS</span>
-            </p>
+            </p>} */}
           </div>
         </div>
       </div>
