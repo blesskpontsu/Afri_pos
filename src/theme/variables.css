@@ -1,0 +1,141 @@
+:root {
+  --theme-color-primary:#156064;
+  --theme-color-primary-rgb: 25, 35, 57;
+  --theme-color-primary-contrast: #ffffff;
+  --theme-color-primary-contrast-rgb: 255, 255, 255;
+  --theme-color-primary-shade: #161f32;
+  --theme-color-primary-tint: #30394d;
+  --theme-color-secondary: #0B86B3;
+  --theme-color-secondary-rgb: 11, 134, 179;
+  --theme-color-secondary-contrast: #ffffff;
+  --theme-color-secondary-contrast-rgb: 255, 255, 255;
+  --theme-color-secondary-shade: #0a769e;
+  --theme-color-secondary-tint: #2392bb;
+  --theme-color-tertiary: #10d7da;
+  --theme-color-tertiary-rgb: 16, 215, 218;
+  --theme-color-tertiary-contrast: #000000;
+  --theme-color-tertiary-contrast-rgb: 0, 0, 0;
+  --theme-color-tertiary-shade: #0ebdc0;
+  --theme-color-tertiary-tint: #28dbde;
+  --theme-color-light: #fafafa;
+  --theme-color-light-rgb: 250, 250, 250;
+  --theme-color-light-contrast: #000000;
+  --theme-color-light-contrast-rgb: 0, 0, 0;
+  --theme-color-light-shade: #dcdcdc;
+  --theme-color-light-tint: #fbfbfb;
+  --theme-color-success: #2dd36f;
+  --theme-color-success-rgb: 45, 211, 111;
+  --theme-color-success-contrast: #000000;
+  --theme-color-success-contrast-rgb: 0, 0, 0;
+  --theme-color-success-shade: #28ba62;
+  --theme-color-success-tint: #42d77d;
+  --theme-color-warning: #ffc409;
+  --theme-color-warning-rgb: 255, 196, 9;
+  --theme-color-warning-contrast: #000000;
+  --theme-color-warning-contrast-rgb: 0, 0, 0;
+  --theme-color-warning-shade: #e0ac08;
+  --theme-color-warning-tint: #ffca22;
+  --theme-color-danger: #eb445a;
+  --theme-color-danger-rgb: 235, 68, 90;
+  --theme-color-danger-contrast: #ffffff;
+  --theme-color-danger-contrast-rgb: 255, 255, 255;
+  --theme-color-danger-shade: #cf3c4f;
+  --theme-color-danger-tint: #ed576b;
+  --theme-color-dark: #222428;
+  --theme-color-dark-rgb: 34, 36, 40;
+  --theme-color-dark-contrast: #ffffff;
+  --theme-color-dark-contrast-rgb: 255, 255, 255;
+  --theme-color-dark-shade: #1e2023;
+  --theme-color-dark-tint: #383a3e;
+  --theme-color-medium: #92949c;
+  --theme-color-medium-rgb: 146, 148, 156;
+  --theme-color-medium-contrast: #000000;
+  --theme-color-medium-contrast-rgb: 0, 0, 0;
+  --theme-color-medium-shade: #808289;
+  --theme-color-medium-tint: #9d9fa6;
+  --theme-color-action-primary:#156064;
+  --theme-color-action-primary-rgb: 25, 35, 57;
+  --theme-color-action-primary-contrast: #ffffff;
+  --theme-color-action-primary-contrast-rgb: 255, 255, 255;
+  --theme-color-action-primary-tint: #30394d;
+  --theme-color-action-secondary: #0B86B3;
+  --theme-color-action-secondary-rgb: 11, 134, 179;
+  --theme-color-action-secondary-contrast: #ffffff;
+  --theme-color-action-secondary-contrast-rgb: 255, 255, 255;
+  --theme-color-action-secondary-shade: #0a769e;
+  --theme-color-action-secondary-tint: #2392bb;
+
+
+
+    --ion-background-color: var(--theme-color-light);
+    --ion-background-color-rgb: var(--theme-color-light-rgb);
+    --ion-text-color: #000000;
+    --ion-text-color-rgb: var(--theme-color-secondary-rgb);
+
+    --ion-color-primary: var(--theme-color-primary);
+    --ion-color-primary-rgb: var(--theme-color-primary-rgb);
+    --ion-color-primary-contrast: var(--theme-color-primary-contrast);
+    --ion-color-primary-contrast-rgb: var(--theme-color-primary-contrast-rgb);
+    --ion-color-primary-shade: var(--theme-color-primary-shade);
+    --ion-color-primary-tint: var(--theme-color-primary-tint);
+
+    --ion-color-secondary: var(--theme-color-secondary);
+    --ion-color-secondary-rgb: var(--theme-color-secondary-rgb);
+    --ion-color-secondary-contrast: var(--theme-color-secondary-contrast);
+    --ion-color-secondary-contrast-rgb: var(--theme-color-secondary-contrast-rgb);
+    --ion-color-secondary-shade: var(--theme-color-secondary-shade);
+    --ion-color-secondary-tint: var(--theme-color-secondary-tint);
+
+    --ion-color-tertiary: var(--theme-color-tertiary);
+    --ion-color-tertiary-rgb: var(--theme-color-tertiary-rgb);
+    --ion-color-tertiary-contrast: var(--theme-color-tertiary-contrast);
+    --ion-color-tertiary-contrast-rgb: var(--theme-color-tertiary-contrast-rgb);
+    --ion-color-tertiary-shade: var(--theme-color-tertiary-shade);
+    --ion-color-tertiary-tint: var(--theme-color-tertiary-tint);
+
+    --ion-color-success: var(--theme-color-success);
+    --ion-color-success-rgb: var(--theme-color-success-rgb);
+    --ion-color-success-contrast: var(--theme-color-success-contrast);
+    --ion-color-success-contrast-rgb: var(--theme-color-success-contrast-rgb);
+    --ion-color-success-shade: var(--theme-color-success-shade);
+    --ion-color-success-tint: var(--theme-color-success-tint);
+
+    --ion-color-warning: var(--theme-color-warning);
+    --ion-color-warning-rgb: var(--theme-color-warning-rgb);
+    --ion-color-warning-contrast: var(--theme-color-warning-contrast);
+    --ion-color-warning-contrast-rgb: var(--theme-color-warning-contrast-rgb);
+    --ion-color-warning-shade: var(--theme-color-warning-shade);
+    --ion-color-warning-tint: var(--theme-color-warning-tint);
+
+    --ion-color-danger: var(--theme-color-danger);
+    --ion-color-danger-rgb: var(--theme-color-danger-rgb);
+    --ion-color-danger-contrast: var(--theme-color-danger-contrast);
+    --ion-color-danger-contrast-rgb: var(--theme-color-danger-contrast-rgb);
+    --ion-color-danger-shade: var(--theme-color-danger-shade);
+    --ion-color-danger-tint: var(--theme-color-danger-tint);
+
+    --ion-color-dark: var(--theme-color-dark);
+    --ion-color-dark-rgb: var(--theme-color-dark-rgb);
+    --ion-color-dark-contrast: var(--theme-color-dark-contrast);
+    --ion-color-dark-contrast-rgb: var(--theme-color-dark-contrast-rgb);
+    --ion-color-dark-shade: var(--theme-color-dark-shade);
+    --ion-color-dark-tint: var(--theme-color-dark-tint);
+
+    --ion-color-medium: var(--theme-color-medium);
+    --ion-color-medium-rgb: var(--theme-color-medium-rgb);
+    --ion-color-medium-contrast: var(--theme-color-medium-contrast);
+    --ion-color-medium-contrast-rgb: var(--theme-color-medium-contrast-rgb);
+    --ion-color-medium-shade: var(--theme-color-medium-shade);
+    --ion-color-medium-tint: var(--theme-color-medium-tint);
+
+    --ion-color-light: var(--theme-color-light);
+    --ion-color-light-rgb: var(--theme-color-light-rgb);
+    --ion-color-light-contrast: var(--theme-color-light-contrast);
+    --ion-color-light-contrast-rgb: var(--theme-color-light-contrast-rgb);
+    --ion-color-light-shade: var(--theme-color-light-shade);
+    --ion-color-light-tint: var(--theme-color-light-tint);
+
+  --ion-font-family: 'noto-sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+  'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'noto-sans', sans-serif, 'Apple Color Emoji',
+  'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  }
