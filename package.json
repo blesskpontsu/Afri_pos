@@ -40,7 +40,7 @@
     "react-toastify": "^10.0.5",
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
-    "yup": "^1.4.0"
+    "yup": "^1.7.0"
   },
   "devDependencies": {
     "@capacitor/cli": "6.1.1",

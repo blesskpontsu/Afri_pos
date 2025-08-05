@@ -24,6 +24,7 @@ export type WithdrawalDraft = {
   amount: string;
   channel: string;
   phone_number: string;
+  verify_phone_number: string;
   password: string;
 };
 
