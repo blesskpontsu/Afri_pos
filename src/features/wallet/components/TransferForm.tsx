@@ -1,7 +1,7 @@
-import React from "react";
-import { Form, Formik, useFormik } from "formik";
+import React, { useState, useEffect } from "react";
+import { Form, Formik } from "formik";
 import { InputField } from "../../../components/Field";
-import { TransferDraft, WithdrawalDraft } from "../lib/types";
+import { TransferDraft } from "../lib/types";
 import { IonButton, IonLoading } from "@ionic/react";
 
 type Props = {
@@ -11,15 +11,28 @@ type Props = {
 };
 
 function TransferForm({ buttonLabel, onSubmit, loading }: Props) {
+  const [isDisabled, setIsDisabled] = useState(false);
+  const [countdown, setCountdown] = useState(0);
+
+  useEffect(() => {
+    if (countdown > 0) {
+      const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
+      return () => clearTimeout(timer);
+    } else if (countdown === 0 && isDisabled) {
+      setIsDisabled(false);
+    }
+  }, [countdown, isDisabled]);
+
+  const handleSubmit = (values: TransferDraft) => {
+    setIsDisabled(true);
+    setCountdown(5);
+    onSubmit(values);
+  };
+
   return (
     <Formik<TransferDraft>
-      initialValues={{
-        amount: "",
-        password: "",
-      }}
-      onSubmit={(values, formikHelpers) => {
-        onSubmit(values);
-      }}
+      initialValues={{ amount: "", password: "" }}
+      onSubmit={handleSubmit}
     >
       {(props) => {
         return (
@@ -41,8 +54,8 @@ function TransferForm({ buttonLabel, onSubmit, loading }: Props) {
               placeholder="Enter your password"
               label="Password"
             />
-            <IonButton expand="block" type="submit">
-              {buttonLabel}
+            <IonButton expand="block" type="submit" disabled={isDisabled}>
+              {isDisabled ? `Wait ${countdown}s...` : buttonLabel}
             </IonButton>
             <IonLoading
               isOpen={loading}
