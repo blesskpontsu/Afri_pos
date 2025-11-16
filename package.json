@@ -40,7 +40,7 @@
     "react-toastify": "^10.0.5",
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
-    "yup": "^1.7.0"
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@capacitor/cli": "6.1.1",
@@ -67,5 +67,6 @@
     "vite-plugin-pwa": "^0.20.1",
     "vitest": "^0.34.6"
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project",
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

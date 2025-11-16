@@ -11,6 +11,8 @@ export type DepositDraft = {
   amount: string;
   channel: string;
   phone_number: string;
+  otp?: string; // Add OTP field
+  deposit_type: 'commission' | 'discount'; // Add deposit type
 };
 
 export type DepositBody = {
@@ -18,14 +20,16 @@ export type DepositBody = {
   code: string;
   amount: number;
   channel: string;
+  otp?: string; // Add OTP field
+  deposit_type: 'commission' | 'discount'; // Add deposit type
 };
 
 export type WithdrawalDraft = {
   amount: string;
   channel: string;
   phone_number: string;
-  verify_phone_number: string;
   password: string;
+  otp?: string; // Add OTP field
 };
 
 export type WithdrawalBody = {
@@ -34,8 +38,8 @@ export type WithdrawalBody = {
   phone_number: string;
   password: string;
   code: string;
+  otp?: string; // Add OTP field
 };
-
 export type TransferDraft = {
   amount: string;
   password: string;
