@@ -9,7 +9,7 @@ import {
 } from "@ionic/react";
 import { arrowBack } from "ionicons/icons";
 import TransactionForm from "../components/TransactionForm";
-import { DepositBody, WithdrawalDraft } from "../lib/types";
+import { DepositBody, DepositDraft } from "../lib/types";
 import { useWallet } from "../hooks/useWallet";
 import { useAuth } from "../../auth/hooks/useAuth";
 import { DepositDraftToDepositBody } from "../lib/dto";
@@ -19,7 +19,7 @@ function DepositPage() {
   const router = useIonRouter();
 
   const { state } = useAuth();
-  const onSubmit = (values: WithdrawalDraft) => {
+  const onSubmit = (values: DepositDraft) => {
     const body: DepositBody = DepositDraftToDepositBody(values, {
       code: state.user.code,
     });
