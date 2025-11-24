@@ -49,7 +49,7 @@ function TransferPage() {
       </IonHeader>
       <IonContent className="flex justify-center items-center ">
         <TransferForm
-          buttonLabel="Load"
+          buttonLabel="Transfer"
           loading={false}
           onSubmit={onSubmit}
         />
