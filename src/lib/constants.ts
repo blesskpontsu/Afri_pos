@@ -4,4 +4,4 @@ export const OTP_URL =
   import.meta.env.VITE_OTP_URL ?? "https://sms.afriluck.com:19972/api/v1";
 export const OTP_API_KEY =
   import.meta.env.VITE_OTP_API_KEY ??
-  "af_aO2DIHvKB6epMPvxaGU7u7WdX6DJFecSLIGgF46L";
+  "af_cr5OYUDWr0sojzkue1YcDbo5ax3VUZSccx2PmMKw";
