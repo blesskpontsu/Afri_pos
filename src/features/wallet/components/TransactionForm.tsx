@@ -187,8 +187,14 @@ function TransactionForm({
     setOtpError("");
   };
 
-  // Handle form submission
   const handleSubmit = (values: any) => {
+    // Skip OTP verification for deposits proceed directly to submission
+    if (type === "deposit") {
+      onSubmit(values);
+      return;
+    }
+
+    // For withdrawals, require OTP verification
     if (!otpVerified) {
       handleRequestOTP(values.phone_number, values);
       return;
@@ -265,8 +271,6 @@ function TransactionForm({
                   label="Amount"
                   placeholder="Enter amount"
                 />
-
-
 
                 <InputField
                   required
@@ -399,7 +403,8 @@ function TransactionForm({
         </Formik>
       )}
 
-      {showOTPSection && (
+      {/*Only show for withdrawals */}
+      {showOTPSection && type === "withdrawal" && (
         <IonCard>
           <IonCardHeader>
             <div className="flex items-center space-x-2">
