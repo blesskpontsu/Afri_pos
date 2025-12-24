@@ -16,7 +16,7 @@ function Profile({ user }: Props) {
       <div className="flex flex-col font-light">
         <p className="font-bold">{user.first_name}</p>
         <p>Agent Code: {user.code}</p>
-        <p>Commission:35%</p>
+        <p>Commission:20%</p>
       </div>
     </div>
   );
