@@ -49,13 +49,13 @@ export const depositTypes = [
   {
     label: "Discount",
     value: "discount" as const,
-    description: "35% discount. Pay less from wallet"
+    description: "20% discount. Pay less from wallet"
   },
-  {
-    label: "Commission",
-    value: "commission" as const,
-    description: "35% commission. Get commission on POS"
-  },
+  // {
+  //   label: "Commission",
+  //   value: "commission" as const,
+  //   description: "20% commission. Get commission on POS"
+  // },
 ];
 
 function TransactionForm({
@@ -215,15 +215,15 @@ function TransactionForm({
     const numericAmount = parseFloat(amount) || 0;
     if (depositType === 'discount') {
       return {
-        payable: numericAmount * 0.65, // 35% discount
-        commission: numericAmount * 0.35,
+        payable: numericAmount * 0.80, // 20% discount
+        commission: numericAmount * 0.20,
         final: numericAmount
       };
     } else {
       return {
         payable: numericAmount,
-        commission: numericAmount * 0.35,
-        final: numericAmount * 1.35
+        commission: numericAmount * 0.20,
+        final: numericAmount * 1.20
       };
     }
   };
