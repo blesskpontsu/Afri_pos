@@ -16,7 +16,7 @@ import {
   IonRadioGroup,
   IonRadio,
   IonItem,
-  IonLabel
+  IonLabel,
 } from "@ionic/react";
 import { arrowBack } from "ionicons/icons";
 import * as Yup from "yup";
@@ -49,12 +49,12 @@ export const depositTypes = [
   {
     label: "Discount",
     value: "discount" as const,
-    description: "20% discount. Pay less from wallet"
+    description: "30% discount. Pay less from wallet",
   },
   // {
   //   label: "Commission",
   //   value: "commission" as const,
-  //   description: "20% commission. Get commission on POS"
+  //   description: "30% commission. Get commission on POS"
   // },
 ];
 
@@ -84,8 +84,8 @@ function TransactionForm({
     verify_phone_number:
       type === "withdrawal"
         ? Yup.string()
-          .required("Please verify your phone number")
-          .oneOf([Yup.ref("phone_number")], "Phone numbers must match")
+            .required("Please verify your phone number")
+            .oneOf([Yup.ref("phone_number")], "Phone numbers must match")
         : Yup.string(),
     channel: Yup.string().required("Network is required"),
     password:
@@ -211,19 +211,22 @@ function TransactionForm({
   };
 
   // Calculate amounts based on selected deposit type
-  const calculateAmounts = (amount: string, depositType: 'commission' | 'discount') => {
+  const calculateAmounts = (
+    amount: string,
+    depositType: "commission" | "discount"
+  ) => {
     const numericAmount = parseFloat(amount) || 0;
-    if (depositType === 'discount') {
+    if (depositType === "discount") {
       return {
-        payable: numericAmount * 0.80, // 20% discount
-        commission: numericAmount * 0.20,
-        final: numericAmount
+        payable: numericAmount * 0.7, // 30% discount
+        commission: numericAmount * 0.3,
+        final: numericAmount,
       };
     } else {
       return {
         payable: numericAmount,
-        commission: numericAmount * 0.20,
-        final: numericAmount * 1.20
+        commission: numericAmount * 0.3,
+        final: numericAmount * 1.3,
       };
     }
   };
@@ -256,11 +259,15 @@ function TransactionForm({
           onSubmit={handleSubmit}
         >
           {(props) => {
-            const phoneMatch = type === "withdrawal"
-              ? props.values.phone_number === props.values.verify_phone_number
-              : true;
+            const phoneMatch =
+              type === "withdrawal"
+                ? props.values.phone_number === props.values.verify_phone_number
+                : true;
 
-            const calculatedAmounts = calculateAmounts(props.values.amount, props.values.deposit_type);
+            const calculatedAmounts = calculateAmounts(
+              props.values.amount,
+              props.values.deposit_type
+            );
 
             return (
               <Form onSubmit={props.handleSubmit} className="space-y-5">
@@ -295,7 +302,11 @@ function TransactionForm({
                       label="Verify Phone number"
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         props.handleChange(e);
-                        props.setFieldTouched("verify_phone_number", true, false);
+                        props.setFieldTouched(
+                          "verify_phone_number",
+                          true,
+                          false
+                        );
                       }}
                       className={
                         props.errors.verify_phone_number ? "border-red-500" : ""
@@ -344,7 +355,9 @@ function TransactionForm({
 
                     <IonRadioGroup
                       value={props.values.deposit_type}
-                      onIonChange={(e) => props.setFieldValue("deposit_type", e.detail.value)}
+                      onIonChange={(e) =>
+                        props.setFieldValue("deposit_type", e.detail.value)
+                      }
                     >
                       <div className="grid grid-cols-2 gap-3">
                         {depositTypes.map((depositType) => (
@@ -352,12 +365,21 @@ function TransactionForm({
                             key={depositType.value}
                             className="rounded-lg border h-full"
                             button
-                            onClick={() => props.setFieldValue("deposit_type", depositType.value)}
+                            onClick={() =>
+                              props.setFieldValue(
+                                "deposit_type",
+                                depositType.value
+                              )
+                            }
                           >
                             <IonRadio value={depositType.value} slot="start" />
                             <IonLabel className="ion-text-wrap">
-                              <div className="font-medium text-sm">{depositType.label}</div>
-                              <div className="text-xs text-gray-600 mt-1">{depositType.description}</div>
+                              <div className="font-medium text-sm">
+                                {depositType.label}
+                              </div>
+                              <div className="text-xs text-gray-600 mt-1">
+                                {depositType.description}
+                              </div>
                             </IonLabel>
                           </IonItem>
                         ))}
@@ -368,20 +390,28 @@ function TransactionForm({
                     {props.values.amount && (
                       <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mt-3">
                         <IonText color="primary">
-                          <h4 className="font-semibold mb-2 text-center text-sm">Summary</h4>
+                          <h4 className="font-semibold mb-2 text-center text-sm">
+                            Summary
+                          </h4>
                         </IonText>
                         <div className="text-sm space-y-1">
                           <div className="flex justify-between">
                             <span>You pay:</span>
-                            <span className="font-semibold">₵{calculatedAmounts.payable.toFixed(2)}</span>
+                            <span className="font-semibold">
+                              ₵{calculatedAmounts.payable.toFixed(2)}
+                            </span>
                           </div>
                           <div className="flex justify-between">
                             <span>Commission:</span>
-                            <span className="font-semibold text-primary">₵{calculatedAmounts.commission.toFixed(2)}</span>
+                            <span className="font-semibold text-primary">
+                              ₵{calculatedAmounts.commission.toFixed(2)}
+                            </span>
                           </div>
                           <div className="flex justify-between border-t border-blue-200 pt-1 mt-1">
                             <span className="font-semibold">You receive:</span>
-                            <span className="font-semibold text-primary">₵{calculatedAmounts.final.toFixed(2)}</span>
+                            <span className="font-semibold text-primary">
+                              ₵{calculatedAmounts.final.toFixed(2)}
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -416,7 +446,9 @@ function TransactionForm({
               >
                 <IonIcon icon={arrowBack} slot="icon-only" />
               </IonButton>
-              <IonCardTitle className="flex-1 text-center">Verify OTP</IonCardTitle>
+              <IonCardTitle className="flex-1 text-center">
+                Verify OTP
+              </IonCardTitle>
               <div className="w-8"></div> {/* Spacer for balance */}
             </div>
           </IonCardHeader>
@@ -426,7 +458,9 @@ function TransactionForm({
                 <p className="text-center text-gray-600">
                   We sent a 4-digit verification code to
                 </p>
-                <p className="text-center font-semibold">{currentPhoneNumber}</p>
+                <p className="text-center font-semibold">
+                  {currentPhoneNumber}
+                </p>
               </IonText>
 
               <div className="w-full flex justify-center">
