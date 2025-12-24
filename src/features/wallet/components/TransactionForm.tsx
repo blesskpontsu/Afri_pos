@@ -250,7 +250,7 @@ function TransactionForm({
             verify_phone_number: "",
             channel: "mtn",
             password: "",
-            deposit_type: "commission" as const,
+            deposit_type: "discount" as const,
           }}
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
