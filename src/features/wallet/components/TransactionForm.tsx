@@ -3,6 +3,10 @@ import { Form, Formik } from "formik";
 import { InputField } from "../../../components/Field";
 import { DepositDraft, WithdrawalDraft } from "../lib/types";
 import {
+  calculateDepositAmounts,
+  DISCOUNT_OR_COMMISSION_PERCENT,
+} from "../lib/pricing";
+import {
   IonButton,
   IonLoading,
   IonText,
@@ -44,18 +48,13 @@ export const networks = [
   },
 ];
 
-// Updated deposit types with commission wording
+// Deposit types currently exposed in the UI.
 export const depositTypes = [
   {
     label: "Discount",
     value: "discount" as const,
-    description: "30% discount. Pay less from wallet",
+    description: `${DISCOUNT_OR_COMMISSION_PERCENT}% discount. Pay less from wallet`,
   },
-  // {
-  //   label: "Commission",
-  //   value: "commission" as const,
-  //   description: "30% commission. Get commission on POS"
-  // },
 ];
 
 function TransactionForm({
@@ -92,10 +91,11 @@ function TransactionForm({
       type === "withdrawal"
         ? Yup.string().required("Password is required")
         : Yup.string(),
-    // Add deposit_type validation for deposit type
     deposit_type:
       type === "deposit"
-        ? Yup.string().required("Deposit type is required")
+        ? Yup.string()
+            .oneOf(["discount", "commission"], "Invalid deposit type")
+            .required("Deposit type is required")
         : Yup.string(),
   });
 
@@ -210,26 +210,10 @@ function TransactionForm({
     setResendTimer(0);
   };
 
-  // Calculate amounts based on selected deposit type
   const calculateAmounts = (
     amount: string,
-    depositType: "commission" | "discount"
-  ) => {
-    const numericAmount = parseFloat(amount) || 0;
-    if (depositType === "discount") {
-      return {
-        payable: numericAmount * 0.7, // 30% discount
-        commission: numericAmount * 0.3,
-        final: numericAmount,
-      };
-    } else {
-      return {
-        payable: numericAmount,
-        commission: numericAmount * 0.3,
-        final: numericAmount * 1.3,
-      };
-    }
-  };
+    depositType: DepositDraft["deposit_type"]
+  ) => calculateDepositAmounts(parseFloat(amount), depositType);
 
   useEffect(() => {
     if (!loading && otpVerified) {
@@ -402,7 +386,11 @@ function TransactionForm({
                             </span>
                           </div>
                           <div className="flex justify-between">
-                            <span>Commission:</span>
+                            <span>
+                              {props.values.deposit_type === "discount"
+                                ? "Discount:"
+                                : "Commission:"}
+                            </span>
                             <span className="font-semibold text-primary">
                               ₵{calculatedAmounts.commission.toFixed(2)}
                             </span>
