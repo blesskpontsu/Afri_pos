@@ -1,5 +1,6 @@
 import React from "react";
 import { User } from "../../../lib/types";
+import { DISCOUNT_OR_COMMISSION_PERCENT } from "../../wallet/lib/pricing";
 
 type Props = {
   user: User;
@@ -16,7 +17,7 @@ function Profile({ user }: Props) {
       <div className="flex flex-col font-light">
         <p className="font-bold">{user.first_name}</p>
         <p>Agent Code: {user.code}</p>
-        <p>Commission:30%</p>
+        <p>Commission: {DISCOUNT_OR_COMMISSION_PERCENT}%</p>
       </div>
     </div>
   );
